@@ -1,0 +1,11 @@
+---- TARGET CODE (Assembly-like) ----
+MOV x, 1
+MOV y, 2
+MOV R1, y
+MUL R1, 3
+MOV t0, R1
+MOV R1, x
+ADD R1, t0
+MOV t1, R1
+MOV z, t1
+MOV return, 0
