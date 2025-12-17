@@ -91,6 +91,20 @@ int main() {
 
 ## Sample Output
 
+### Symbol Table
+```text
+Parsing started...
+Parsing successful Γ£à
+
+------ SYMBOL TABLE ------
+Name    Type
+x       int
+y       int
+z       int
+```
+
+
+
 ### Three Address Code (TAC)
 
 ```text
