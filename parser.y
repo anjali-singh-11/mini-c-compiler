@@ -32,6 +32,14 @@ void insert(char *name, char *type) {
     symcount++;
 }
 
+void display() {
+    printf("\n------ SYMBOL TABLE ------\n");
+    printf("Name\tType\n");
+    for (int i = 0; i < symcount; i++) {
+        printf("%s\t%s\n", symtab[i].name, symtab[i].type);
+    }
+}
+
 /* ---------- THREE ADDRESS CODE ---------- */
 struct TAC {
     char res[10], op1[10], op2[10], op[5];
@@ -260,6 +268,7 @@ int main() {
     printf("Parsing started...\n");
     yyparse();
     printf("Parsing successful ✅\n");
+    display();
     displayTAC();
     generateTargetCode();
     return 0;
