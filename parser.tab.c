@@ -98,6 +98,14 @@ void insert(char *name, char *type) {
     symcount++;
 }
 
+void display() {
+    printf("\n------ SYMBOL TABLE ------\n");
+    printf("Name\tType\n");
+    for (int i = 0; i < symcount; i++) {
+        printf("%s\t%s\n", symtab[i].name, symtab[i].type);
+    }
+}
+
 /* ---------- THREE ADDRESS CODE ---------- */
 struct TAC {
     char res[10], op1[10], op2[10], op[5];
@@ -170,7 +178,7 @@ void generateTargetCode() {
 
 
 /* Line 371 of yacc.c  */
-#line 174 "parser.tab.c"
+#line 182 "parser.tab.c"
 
 # ifndef YY_NULL
 #  if defined __cplusplus && 201103L <= __cplusplus
@@ -236,14 +244,14 @@ extern int yydebug;
 typedef union YYSTYPE
 {
 /* Line 387 of yacc.c  */
-#line 110 "parser.y"
+#line 118 "parser.y"
 
     int num;
     char* str;
 
 
 /* Line 387 of yacc.c  */
-#line 247 "parser.tab.c"
+#line 255 "parser.tab.c"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
@@ -271,7 +279,7 @@ int yyparse ();
 /* Copy the second part of user declarations.  */
 
 /* Line 390 of yacc.c  */
-#line 275 "parser.tab.c"
+#line 283 "parser.tab.c"
 
 #ifdef short
 # undef short
@@ -568,11 +576,11 @@ static const yytype_int8 yyrhs[] =
 };
 
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
-static const yytype_uint8 yyrline[] =
+static const yytype_uint16 yyrline[] =
 {
-       0,   133,   133,   137,   141,   142,   146,   147,   148,   149,
-     150,   154,   159,   163,   170,   181,   187,   193,   200,   206,
-     212,   219,   225,   233,   240,   244,   248
+       0,   141,   141,   145,   149,   150,   154,   155,   156,   157,
+     158,   162,   167,   171,   178,   189,   195,   201,   208,   214,
+     220,   227,   233,   241,   248,   252,   256
 };
 #endif
 
@@ -1501,7 +1509,7 @@ yyreduce:
     {
         case 11:
 /* Line 1792 of yacc.c  */
-#line 155 "parser.y"
+#line 163 "parser.y"
     {
           insert((yyvsp[(2) - (5)].str), "int");
           emit((yyvsp[(2) - (5)].str), (yyvsp[(4) - (5)].str), "=", "");
@@ -1510,7 +1518,7 @@ yyreduce:
 
   case 12:
 /* Line 1792 of yacc.c  */
-#line 160 "parser.y"
+#line 168 "parser.y"
     {
           insert((yyvsp[(2) - (3)].str), "int");
       }
@@ -1518,7 +1526,7 @@ yyreduce:
 
   case 13:
 /* Line 1792 of yacc.c  */
-#line 164 "parser.y"
+#line 172 "parser.y"
     {
           insert((yyvsp[(2) - (3)].str), "char");
       }
@@ -1526,7 +1534,7 @@ yyreduce:
 
   case 14:
 /* Line 1792 of yacc.c  */
-#line 171 "parser.y"
+#line 179 "parser.y"
     {
         if (lookup((yyvsp[(1) - (4)].str)) == -1) {
             printf("Semantic Error ❌: %s not declared\n", (yyvsp[(1) - (4)].str));
@@ -1538,7 +1546,7 @@ yyreduce:
 
   case 15:
 /* Line 1792 of yacc.c  */
-#line 182 "parser.y"
+#line 190 "parser.y"
     {
           char *t = newtemp();
           emit(t, (yyvsp[(1) - (3)].str), "+", (yyvsp[(3) - (3)].str));
@@ -1548,7 +1556,7 @@ yyreduce:
 
   case 16:
 /* Line 1792 of yacc.c  */
-#line 188 "parser.y"
+#line 196 "parser.y"
     {
           char *t = newtemp();
           emit(t, (yyvsp[(1) - (3)].str), "-", (yyvsp[(3) - (3)].str));
@@ -1558,7 +1566,7 @@ yyreduce:
 
   case 17:
 /* Line 1792 of yacc.c  */
-#line 194 "parser.y"
+#line 202 "parser.y"
     {
           (yyval.str) = (yyvsp[(1) - (1)].str);
       }
@@ -1566,7 +1574,7 @@ yyreduce:
 
   case 18:
 /* Line 1792 of yacc.c  */
-#line 201 "parser.y"
+#line 209 "parser.y"
     {
           char *t = newtemp();
           emit(t, (yyvsp[(1) - (3)].str), "*", (yyvsp[(3) - (3)].str));
@@ -1576,7 +1584,7 @@ yyreduce:
 
   case 19:
 /* Line 1792 of yacc.c  */
-#line 207 "parser.y"
+#line 215 "parser.y"
     {
           char *t = newtemp();
           emit(t, (yyvsp[(1) - (3)].str), "/", (yyvsp[(3) - (3)].str));
@@ -1586,7 +1594,7 @@ yyreduce:
 
   case 20:
 /* Line 1792 of yacc.c  */
-#line 213 "parser.y"
+#line 221 "parser.y"
     {
           (yyval.str) = (yyvsp[(1) - (1)].str);
       }
@@ -1594,7 +1602,7 @@ yyreduce:
 
   case 21:
 /* Line 1792 of yacc.c  */
-#line 220 "parser.y"
+#line 228 "parser.y"
     {
           char buf[10];
           sprintf(buf, "%d", (yyvsp[(1) - (1)].num));
@@ -1604,7 +1612,7 @@ yyreduce:
 
   case 22:
 /* Line 1792 of yacc.c  */
-#line 226 "parser.y"
+#line 234 "parser.y"
     {
           if (lookup((yyvsp[(1) - (1)].str)) == -1) {
               printf("Semantic Error ❌: %s not declared\n", (yyvsp[(1) - (1)].str));
@@ -1616,7 +1624,7 @@ yyreduce:
 
   case 23:
 /* Line 1792 of yacc.c  */
-#line 234 "parser.y"
+#line 242 "parser.y"
     {
           (yyval.str) = (yyvsp[(2) - (3)].str);
       }
@@ -1624,7 +1632,7 @@ yyreduce:
 
   case 26:
 /* Line 1792 of yacc.c  */
-#line 249 "parser.y"
+#line 257 "parser.y"
     {
         emit("return", (yyvsp[(2) - (3)].str), "=", "");
     }
@@ -1632,7 +1640,7 @@ yyreduce:
 
 
 /* Line 1792 of yacc.c  */
-#line 1636 "parser.tab.c"
+#line 1644 "parser.tab.c"
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -1864,7 +1872,7 @@ yyreturn:
 
 
 /* Line 2055 of yacc.c  */
-#line 253 "parser.y"
+#line 261 "parser.y"
 
 
 void yyerror(const char *s) {
@@ -1875,6 +1883,7 @@ int main() {
     printf("Parsing started...\n");
     yyparse();
     printf("Parsing successful ✅\n");
+    display();
     displayTAC();
     generateTargetCode();
     return 0;
