@@ -1,0 +1,8 @@
+Parsing started...
+Parsing successful Γ£à
+
+------ SYMBOL TABLE ------
+Name    Type
+x       int
+y       int
+z       int
